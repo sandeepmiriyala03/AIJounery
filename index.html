@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Portfolio of Sandeep Miriyala – Developer and AI Experimenter. Featuring projects like Ratnalabala, Sri Rama Koti, and Yukthi Śālā AI Lab. Includes About, Projects, AI Experiments, Contact, and Site Map." />
+  <title>Sandeep Miriyala - Yukthi Śālā</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --color-light-bg: #F8F9FA; /* Very light gray for overall page */
+      --color-header-bg: #E0F2F7; /* Soft light blue for header */
+      --color-main-card-bg: #FFFFFF; /* White for main content and cards */
+      --color-text-dark: #212529; /* Dark charcoal for primary text */
+      --color-accent-blue: #007BFF; /* Brighter blue */
+      --color-accent-gold: #FFC107; /* Brighter yellow/gold */
+      --color-border-light: #DEE2E6; /* Light gray border */
+      --color-white: #FFFFFF;
+    }
+
+    body {
+      font-family: 'Inter', Arial, sans-serif;
+      background: var(--color-light-bg); /* Lighter background for the whole page */
+      color: var(--color-text-dark); /* Darker text for contrast */
+      margin: 0;
+      line-height: 1.6;
+      font-size: 18px;
+    }
+    .skip-link {
+      position: absolute;
+      top: -40px;
+      left: 0;
+      background: var(--color-accent-blue);
+      color: var(--color-white);
+      padding: 8px 18px;
+      z-index: 100;
+      border-radius: 0 0 8px 8px;
+    }
+    .skip-link:focus {
+      top: 0;
+    }
+    header {
+      background: var(--color-header-bg); /* Soft light blue header */
+      color: var(--color-text-dark); /* Darker text for header */
+      padding: 20px; /* Uniform padding */
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Lighter shadow for a lighter theme */
+      display: flex; /* Use flexbox for layout */
+      justify-content: space-between; /* Space out logo, titles, nav */
+      align-items: center; /* Vertically align items */
+      flex-wrap: wrap; /* Allow wrapping on small screens */
+    }
+    .logo {
+      display: block;
+      margin: 0; /* Remove previous margin */
+      width: 100px;
+      height: 100px;
+      object-fit: contain;
+      filter: drop-shadow(0 0 8px rgba(255, 193, 7, 0.5)); /* Gold glow maintained */
+      flex-shrink: 0; /* Prevent logo from shrinking */
+    }
+    .header-titles {
+        flex-grow: 1; /* Allow titles to take available space */
+        text-align: center; /* Center titles */
+        margin: 0 20px; /* Add some horizontal margin */
+    }
+    header h1 {
+        font-size: 2.0em;
+        margin-bottom: 4px;
+        letter-spacing: 2px;
+        color: var(--color-accent-blue);
+        text-shadow: 0 0 3px rgba(0, 123, 255, 0.5);
+    }
+    header h2 {
+        font-size: 1.1em;
+        margin-top: 0;
+        color: var(--color-text-dark);
+        font-weight: 300;
+        letter-spacing: 1px;
+    }
+    .main-nav {
+      background: none; /* Remove background from nav itself, apply to ul if needed */
+      border-top: none; /* Remove border from nav itself */
+      box-shadow: none; /* Remove shadow from nav itself */
+      padding: 0; /* Remove padding from nav itself */
+    }
+    .main-nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      justify-content: flex-end; /* Align nav items to the right */
+      flex-wrap: wrap; /* Allow nav items to wrap */
+    }
+    .main-nav li {
+      margin: 0 15px; /* Spacing between nav items */
+      position: relative; /* For dropdown positioning */
+    }
+    .main-nav a {
+      color: var(--color-text-dark);
+      text-decoration: none;
+      font-weight: 600;
+      padding: 8px 12px;
+      display: block;
+      transition: all 0.3s ease;
+      border-radius: 5px;
+    }
+    .main-nav a:hover,
+    .main-nav a:focus {
+      color: var(--color-accent-blue);
+      background: rgba(0, 123, 255, 0.08);
+      text-decoration: none;
+      transform: translateY(-2px);
+    }
+
+    /* Dropdown menu styling */
+    .main-nav .dropdown-menu {
+      display: none; /* Hidden by default */
+      position: absolute;
+      background-color: var(--color-header-bg); /* Match header background */
+      min-width: 160px;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      z-index: 1;
+      border-radius: 5px;
+      padding: 10px 0;
+      top: 100%; /* Position below the parent li */
+      left: 0;
+      flex-direction: column; /* Stack items vertically */
+      align-items: flex-start; /* Align text to left */
+    }
+
+    .main-nav .dropdown-menu li {
+      margin: 0; /* Reset margin for dropdown items */
+      width: 100%;
+    }
+
+    .main-nav .dropdown-menu a {
+      color: var(--color-text-dark);
+      padding: 10px 15px;
+      text-decoration: none;
+      display: block;
+      text-align: left;
+      border-radius: 0; /* Remove border-radius for dropdown items */
+    }
+
+    .main-nav .dropdown-menu a:hover {
+      background-color: rgba(0, 123, 255, 0.15); /* Slightly darker hover for dropdown */
+      color: var(--color-accent-blue);
+    }
+
+    /* Show dropdown on hover */
+    .main-nav li.has-dropdown:hover > .dropdown-menu {
+      display: flex; /* Use flex to show the dropdown */
+    }
+
+    main {
+      background: var(--color-main-card-bg);
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 40px 30px;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+      border: 1px solid var(--color-border-light);
+    }
+    .section-heading {
+        color: var(--color-accent-blue);
+        font-size: 1.8em;
+        margin-bottom: 25px;
+        text-align: center;
+        padding-bottom: 15px;
+        border-bottom: 2px solid var(--color-border-light);
+        position: relative;
+        padding-top: 10px;
+    }
+    .section-heading::after {
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 4px;
+        background: var(--color-accent-gold);
+        border-radius: 2px;
+    }
+    .about p, .project-desc, .contact-info p {
+        color: var(--color-text-dark);
+        margin-bottom: 1em;
+    }
+    .project-list {
+      list-style: none;
+      padding-left: 0;
+    }
+    .project-list li {
+      margin-bottom: 40px;
+      padding-bottom: 20px;
+      border-bottom: 1px dashed var(--color-border-light);
+    }
+    .project-list li:last-child {
+        border-bottom: none;
+    }
+    .project-title {
+      font-weight: bold;
+      font-size: 1.2em;
+      color: var(--color-accent-blue);
+      margin-bottom: 10px;
+      display: block;
+      text-shadow: 0 0 1px rgba(0, 123, 255, 0.2);
+    }
+    .project-desc strong {
+        color: var(--color-accent-blue);
+    }
+    .contact-info p strong {
+        color: var(--color-accent-blue);
+    }
+    .contact-info a {
+      color: var(--color-accent-blue);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    .contact-info a:hover,
+    .contact-info a:focus {
+      color: var(--color-accent-gold);
+      text-decoration: underline;
+    }
+    .sitemap-list {
+        list-style: none;
+        padding-left: 0;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+        margin-top: 20px;
+    }
+    .sitemap-list li {
+        background: var(--color-light-bg);
+        padding: 8px 15px;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        transition: transform 0.2s ease;
+    }
+    .sitemap-list li:hover {
+        transform: translateY(-3px);
+    }
+    .sitemap-list li a {
+        color: var(--color-text-dark);
+        text-decoration: none;
+        font-weight: 500;
+    }
+    .sitemap-list li a:hover {
+        color: var(--color-accent-blue);
+    }
+    .ai-grid {
+      display: grid;
+      gap: 25px;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      margin-top: 30px;
+    }
+    .ai-card {
+      background: var(--color-main-card-bg);
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      border: 1px solid var(--color-border-light);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .ai-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    }
+    .ai-card h3 {
+        color: var(--color-accent-blue);
+        margin-top: 0;
+        font-size: 1.2em;
+        margin-bottom: 15px;
+        text-shadow: 0 0 1px rgba(0, 123, 255, 0.2);
+    }
+    .ai-card p {
+        color: var(--color-text-dark);
+    }
+    .go-top {
+      position: fixed;
+      right: 30px;
+      bottom: 30px;
+      display: none;
+      z-index: 10;
+      background: var(--color-accent-blue);
+      color: var(--color-white);
+      border: none;
+      border-radius: 50%;
+      width: 55px;
+      height: 55px;
+      font-size: 2.2em;
+      cursor: pointer;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+      transition: background 0.3s, transform 0.3s;
+    }
+    .go-top:focus,
+    .go-top:hover {
+      background: #0056b3;
+      outline: 2px solid var(--color-accent-gold);
+      transform: translateY(-3px);
+    }
+    footer {
+      text-align: center;
+      margin: 50px 0 20px 0;
+      font-size: 0.9em;
+      color: var(--color-text-dark);
+    }
+    hr {
+        border: none;
+        border-top: 1px dashed var(--color-border-light);
+        margin: 40px auto;
+        width: 80%;
+    }
+    @media (min-width: 769px) { /* Desktop layout */
+        header {
+            flex-direction: row;
+            justify-content: space-between;
+            padding: 20px 40px;
+        }
+        .logo {
+            margin-right: 20px;
+        }
+        .header-titles {
+            flex-grow: 1;
+            text-align: center;
+            max-width: 400px;
+        }
+        .main-nav {
+            flex-shrink: 0;
+            width: auto;
+        }
+        .main-nav ul {
+            flex-direction: row;
+            justify-content: flex-end;
+        }
+        .main-nav li {
+            margin: 0 15px;
+        }
+        /* Desktop-specific dropdown behavior */
+        .main-nav .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            display: none;
+            flex-direction: column;
+            background-color: var(--color-header-bg);
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            border-radius: 5px;
+            padding: 10px 0;
+            z-index: 1;
+        }
+        .main-nav li.has-dropdown:hover > .dropdown-menu {
+            display: flex;
+        }
+    }
+    @media (max-width: 768px) { /* Tablet and smaller desktop */
+        header {
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+        .logo {
+            margin-bottom: 15px;
+            margin-right: 0;
+        }
+        .header-titles {
+            text-align: center;
+            margin: 0 0 20px 0;
+        }
+        .main-nav {
+            width: 100%;
+            background: rgba(0, 123, 255, 0.1);
+            padding: 15px 0;
+            border-top: 1px solid var(--color-border-light);
+            box-shadow: inset 0 1px 5px rgba(0, 0, 0, 0.05);
+        }
+        .main-nav ul {
+            flex-direction: column; /* Stack nav items vertically */
+            justify-content: center;
+            align-items: center; /* Center items */
+        }
+        .main-nav li {
+            margin: 8px 0; /* More vertical spacing */
+            width: 100%; /* Full width for clickable area */
+            text-align: center;
+        }
+        /* Mobile-specific dropdown behavior */
+        .main-nav .dropdown-menu {
+            position: static; /* Remove absolute positioning */
+            display: none; /* Hidden by default */
+            background: none; /* No background, blend with parent nav */
+            box-shadow: none; /* No shadow */
+            padding: 0;
+            margin-top: 5px; /* Space below parent */
+            border-radius: 0;
+            width: 100%;
+            align-items: center; /* Center sub-items */
+        }
+        .main-nav li.has-dropdown.active > .dropdown-menu {
+            display: flex; /* Show dropdown when parent is active */
+        }
+        .main-nav .dropdown-menu a {
+            padding: 8px 0; /* Smaller padding for sub-items */
+            font-size: 0.9em; /* Smaller font size */
+            color: var(--color-text-dark); /* Darker text */
+            background-color: rgba(0, 123, 255, 0.05); /* Very subtle background */
+            border-radius: 5px;
+            width: 80%; /* Make sub-items narrower */
+            margin: 4px auto; /* Center them */
+        }
+        .main-nav .dropdown-menu a:hover {
+            background-color: rgba(0, 123, 255, 0.1);
+        }
+        .section-heading {
+            font-size: 1.6em;
+        }
+        .ai-grid {
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        }
+    }
+    @media (max-width: 600px) { /* Mobile devices */
+      .main-nav ul {
+        flex-direction: column;
+        align-items: center;
+      }
+      .main-nav li {
+        margin: 8px 0;
+      }
+      main { padding: 20px 15px 15px 15px; }
+      .logo { width: 90px; height: 90px; margin-bottom: 10px; margin-right: 0;}
+      header h1 { font-size: 1.5em; }
+      header h2 { font-size: 0.9em; margin-bottom: 20px; }
+      .section-heading { font-size: 1.3em; }
+      .ai-grid {
+          grid-template-columns: 1fr;
+      }
+      .go-top {
+          width: 45px;
+          height: 45px;
+          font-size: 1.8em;
+          right: 20px;
+          bottom: 20px;
+      }
+      .sitemap-list {
+          flex-direction: column;
+          align-items: center;
+          gap: 10px;
+      }
+      .header-content {
+          flex-direction: column;
+          text-align: center;
+      }
+      .header-titles {
+          text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <header>
+    <img src="Yukiti sala.png" alt="Yukthi Śālā Logo - Chariot with lightbulb" class="logo" aria-label="Yukthi Śālā Logo" />
+    <div class="header-titles">
+      <h1>Yukthi Śālā</h1>
+      <h2>अनुसंधान (Anusandhāna)</h2>
+    </div>
+    <nav class="main-nav" aria-label="Main Navigation">
+      <ul>
+        <li><a href="#about">About Me</a></li>
+        <li><a href="#ai-experiments">AI Experiments</a></li>
+        <li class="has-dropdown">
+          <a href="#projects">Projects ▼</a> <!-- Added dropdown indicator -->
+          <ul class="dropdown-menu">
+            <li><a href="#ratnalabala">Ratnalabala</a></li>
+            <li><a href="#sriramakoti">Sri Rama Koti</a></li>
+          </ul>
+        </li>
+        <li><a href="#contact">Contact Me</a></li>
+        <li><a href="#sitemap">Site Map</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main-content" tabindex="-1">
+    <section id="about" class="about" aria-labelledby="about-heading">
+      <h2 id="about-heading" class="section-heading">About Me</h2>
+      <p>
+        Hi, I'm a developer with extensive experience and a passionate <strong>AI enthusiast</strong>. I blend robust development skills with cutting-edge AI tools to create innovative solutions, backed by leadership and Agile expertise.
+      </p>
+      <p>
+        I actively leverage AI models like <strong>ChatGPT and other intelligent APIs</strong> to streamline development workflows, automate complex tasks, and build intuitive user interfaces.
+      </p>
+      <p>
+        My recent work uniquely marries <strong>AI with spiritual and cultural initiatives</strong>, showcasing how technology can enrich tradition and learning. These projects include:
+        <ul>
+          <li>🗣️ Integrating <strong>Telugu Text-to-Speech</strong> for richer poetic recitations.</li>
+          <li>🧠 Developing <strong>prompt-based chatbots</strong> for insightful poem Q&A and deeply engaging devotional interactions.</li>
+        </ul>
+      </p>
+      <p>
+        I believe in harnessing the power of AI to preserve heritage, enhance learning experiences, and infuse digital innovation with profound cultural meaning.
+      </p>
+    </section>
+
+    <hr />
+
+    <section id="ai-experiments" class="ai-experiments" aria-labelledby="ai-experiments-heading">
+      <h2 id="ai-experiments-heading" class="section-heading">My AI Experiments & Innovations</h2>
+      <div class="ai-grid">
+        <div class="ai-card">
+          <h3>🗣️ Telugu TTS (Text-to-Speech) Integration</h3>
+          <p>Within the <strong>Ratnalabala app</strong>, I integrated authentic <strong>Telugu voice support</strong> using the browser's Speech Synthesis API. This brings the poetic rhythm and traditional texts vibrantly to life, creating an immersive experience for listeners.</p>
+        </div>
+        <div class="ai-card">
+          <h3>💡 Advanced Prompt Engineering for Chatbots</h3>
+          <p>I've designed and refined custom chatbot prompts to simulate a highly knowledgeable Telugu literary expert. This expertise was crucial for developing advanced <strong>poem Q&A features</strong> and engaging conversational flows in my experimental projects.</p>
+        </div>
+        <div class="ai-card">
+          <h3>🙏 Sri Rama Koti – AI-Assisted Conceptualization</h3>
+          <p>I utilized <strong>ChatGPT</strong> to brainstorm and refine the core concepts for this unique devotional browser app. AI assistance was key in optimizing the batch insertion logic and efficient <strong>IndexedDB</strong> usage, allowing the app to seamlessly manage over a crore (10 million) entries.</p>
+          <p>
+          🔗 <a href="https://sriramakoti.netlify.app/" target="_blank" rel="noopener noreferrer">Visit Sri Rama Koti</a>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <hr />
+
+    <section id="projects" class="projects" aria-labelledby="projects-heading">
+    <h2 id="projects-heading" class="section-heading">✨ Projects</h2>
+    <ul class="project-list">
+      <li id="ratnalabala"> <!-- Added ID for direct linking -->
+        <span class="project-title">Ratnalabala – A Digital Tribute to Timeless Telugu Poetry 🇮🇳</span>
+        <div class="project-desc">
+<strong>Purpose:</strong> This project digitally preserves over 30 classic Telugu poems, originally authored by my grandfather, Sri Miriyala Venkata Rathanam. My goal was to revive these timeless works and make them accessible online.
+
+<strong>Key Features:</strong>
+– 🎙️ Integrated <strong>Telugu Text-to-Speech</strong> for immersive listening.
+– 📲 Implemented as a <strong>Progressive Web App (PWA)</strong> for seamless mobile installation and offline access.
+– Robust support for modern Telugu Unicode text display.
+
+<strong>Technologies Used:</strong>
+Next.js, TypeScript, Material UI, Web Speech API, Vercel Hosting, PWA. I also leveraged <strong>AI tools</strong> during development for <strong>OCR/NLP</strong> to convert handwritten texts and <strong>prompt engineering</strong> (with Suno AI) to generate background music for the poems.
+
+🔗 <a href="https://ratnalabala.vercel.app/" target="_blank" rel="noopener noreferrer">https://ratnalabala.vercel.app/</a>
+        </div>
+      </li>
+
+      <li id="sriramakoti"> <!-- Added ID for direct linking -->
+        <span class="project-title">Sri Rama Koti – 1 Crore Rama Namalu Browser App 🙏</span>
+        <div class="project-desc">
+<strong>Purpose:</strong> This fully browser-based HTML application is designed to facilitate the completion of 1 crore (10 million) Sri Rama namas, providing a digital platform for this devotional practice.
+
+<strong>Key Features:</strong>
+– ✅ Efficient <strong>IndexedDB</strong> implementation with pagination for smooth performance, even with a massive dataset.
+– ✅ Comprehensive performance logging to monitor full data insertion and ensure reliability.
+
+<strong>Technologies Used:</strong>
+HTML, JavaScript, IndexedDB API, Netlify. <strong>AI tools (specifically ChatGPT)</strong> were instrumental in the conceptualization phase, helping to brainstorm and optimize the core logic for handling large-scale data insertion.
+
+🔗 <a href="https://sriramakoti.netlify.app/" target="_blank" rel="noopener noreferrer">https://sriramakoti.netlify.app/</a>
+        </div>
+      </li>
+    </ul>
+    </section>
+
+    <hr />
+
+    <section id="contact" class="contact" aria-labelledby="contact-heading">
+      <h2 id="contact-heading" class="section-heading">Contact Me</h2>
+      <div class="contact-info">
+        <p>I'm always open to discussing new projects, collaborations, or opportunities related to AI and development. Feel free to reach out!</p>
+        <p><strong>Name:</strong> Sandeep Miriyala</p>
+        <p><strong>Email:</strong> <a href="mailto:vanisandeep@gmail.com">vanisandeep@gmail.com</a></p>
+        <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/sandeepmiriyala1/" target="_blank" rel="noopener noreferrer">linkedin.com/in/sandeepmiriyala1/</a></p>
+        <p><strong>GitHub:</strong> <a href="https://github.com/sandeepmiriyala03" target="_blank" rel="noopener noreferrer">github.com/sandeepmiriyala03</a></p>
+      </div>
+    </section>
+
+    <hr />
+
+    <section id="sitemap" class="sitemap" aria-labelledby="sitemap-heading">
+      <h2 id="sitemap-heading" class="section-heading">Site Map</h2>
+      <ul class="sitemap-list">
+        <li><a href="#about">About Me</a></li>
+        <li><a href="#ai-experiments">My AI Experiments & Innovations</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact Me</a></li>
+      </ul>
+    </section>
+
+  </main>
+
+  <button class="go-top" aria-label="Scroll to top" onclick="window.scrollTo({top:0,behavior:'smooth'});" title="Go to top">
+    <span aria-hidden="true">↑</span>
+  </button>
+
+  <footer>
+    &copy; <span id="year"></span> <strong>Sandeep Miriyala</strong>. All rights reserved.
+  </footer>
+
+  <script>
+    const goTopBtn = document.querySelector('.go-top');
+    window.addEventListener('scroll', () => {
+      goTopBtn.style.display = window.scrollY > 180 ? 'block' : 'none';
+    });
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // JavaScript for mobile dropdown toggle
+    document.addEventListener('DOMContentLoaded', () => {
+      const projectsDropdown = document.querySelector('.main-nav li.has-dropdown > a');
+      if (projectsDropdown) {
+        projectsDropdown.addEventListener('click', function(event) {
+          // Only prevent default if it's a mobile view
+          if (window.innerWidth <= 768) { // Matches the media query breakpoint
+            event.preventDefault();
+            this.parentElement.classList.toggle('active'); // Toggle 'active' class on parent li
+          }
+        });
+      }
+    });
+  </script>
+</body>
+</html>
